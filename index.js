@@ -1508,8 +1508,8 @@ async function load_resources() {
 	return;*/
 
 
-	//let git_src="https://akukamil.github.io/chapaev/"
-	let git_src=""
+	let git_src="https://akukamil.github.io/whoiam/"
+	//let git_src=""
 
 
 	game_res=new PIXI.Loader();
