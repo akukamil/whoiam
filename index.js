@@ -46,7 +46,18 @@ class card_class extends PIXI.Container {
 	
 	
 }
+
+var get_server = async function() {
 	
+	 response = await vkBridge.send('VKWebAppCallAPIMethod', {
+        method: 'photos.getUploadServer',
+        params: {},
+      })
+	  
+	  console.log(response)
+	
+	
+}
 	
 	
 var anim2 = {
@@ -1493,6 +1504,7 @@ async function init_game_env() {
 
 		//устанавливаем фотки в попап и другие карточки
 		objects.pic_1.pic.texture=l.resources.my_avatar.texture;
+		get_server();
 	
 	}).catch((err)=>{
 		alert(err.stack + " " + err);
