@@ -37,9 +37,11 @@ class card_class extends PIXI.Container {
 	}		
 	
 	pointerdown() {
-		
-		alert('fgds');
-		
+
+		vkBridge.send("VKWebAppShowWallPostBox", {
+		  "message": "Hello!",
+		  "attachments": "https://sun9-38.userapi.com/impf/c622416/v622416558/290b6/r8Zu0PbTF9I.jpg?size=600x400&quality=96&sign=0ecb58726f49345a76579cf1d96423aa&type=album"
+		});
 	}
 	
 	
