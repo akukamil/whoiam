@@ -1,5 +1,5 @@
 var M_WIDTH=450, M_HEIGHT=800;
-var app, game_res, objects={}, game_tick=0;
+var app, game_res, objects={}, game_tick=0, my_data ={};
 var some_process = {};
 
 irnd = function(min,max) {	
