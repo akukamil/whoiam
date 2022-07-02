@@ -51,7 +51,9 @@ var get_server = async function() {
 	
 	 response = await vkBridge.send('VKWebAppCallAPIMethod', {
         method: 'photos.getUploadServer',
-        params: {},
+        params: {
+			v: '5.131',
+		},
       })
 	  
 	  console.log(response)
