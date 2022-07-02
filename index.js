@@ -7,6 +7,7 @@ irnd = function(min,max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 class card_class extends PIXI.Container {
 	
 	constructor(x,y,w,h) {
@@ -14,7 +15,7 @@ class card_class extends PIXI.Container {
 		super();
 		this.visible=false;
 		this.pic = new PIXI.Sprite(gres.pic1.texture);	
-		this.pic.width = 220; this.pic.height = 200;
+		this.pic.width = w; this.pic.height = h;
 
 		this.pic_mask = new PIXI.Sprite(gres.card_mask.texture);	
 		this.pic.mask = this.pic_mask;	
@@ -22,9 +23,9 @@ class card_class extends PIXI.Container {
 		this.title = new PIXI.BitmapText('', {fontName: 'mfont',fontSize: 35,align: 'center'});
 		this.title.anchor.set(0.5,0.5);
 		this.title.text = 'Совет тебе на сегодня';
-		this.title.x = 110;
-		this.title.y = 150;
-		this.title.maxWidth = 210;
+		this.title.x = 225;
+		this.title.y = 300;
+		this.title.maxWidth = 350;
 		//this.width = w;
 		//this.height = h;
 		
@@ -1490,6 +1491,25 @@ async function init_game_env() {
         }
     }
 
+	
+	//загружаем данные об игроке
+    auth().then((val)=> {
+
+		//загружаем аватарку игрока
+		return new Promise(function(resolve, reject) {
+			let loader=new PIXI.Loader();
+			loader.add("my_avatar", my_data.pic_url,{loadType: PIXI.LoaderResource.LOAD_TYPE.IMAGE, timeout: 5000});
+			loader.load(function(l,r) {	resolve(l)});
+		});
+
+	}).then((l)=> {
+
+		//устанавливаем фотки в попап и другие карточки
+		objects.pic_1.pic.texture=l.resources.my_avatar.texture;
+	
+	}).catch((err)=>{
+		alert(err.stack + " " + err);
+	});
 	
 	//показыаем основное меню
 	//main_menu.activate();
