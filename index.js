@@ -49,6 +49,17 @@ class card_class extends PIXI.Container {
 
 var get_server = async function() {
 	
+	
+	 response = await vkBridge.send('VKWebAppCallAPIMethod', {
+        method: 'photos.getAlbums',
+        params: {
+			v: '5.131',
+		},
+      })
+	  
+	  console.log(response)
+	
+	
 	 response = await vkBridge.send('VKWebAppCallAPIMethod', {
         method: 'photos.getUploadServer',
         params: {
