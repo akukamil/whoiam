@@ -53,13 +53,14 @@ var get_server = async function() {
 	access_token  = response.access_token
 	console.log(access_token);
 
-	albums = await vkBridge.send('VKWebAppCallAPIMethod', {
+	response = await vkBridge.send('VKWebAppCallAPIMethod', {
 			method: 'photos.getAlbums',
 			params: {
 			v: '5.131',
 			access_token: access_token
 		},
 	})	
+	albums = response.response
 
 	let album_id = -1
 	albums.items.forEach(a=>{
