@@ -99,10 +99,11 @@ var get_server = async function() {
 	const blob = await new Promise(resolve => app.renderer.plugins.extract.canvas(objects.pic_1).toBlob(resolve));
 	
 	let formData = new FormData();
-	formData.append("image", blob, "image.png");
+	formData.append("file1", blob);
 
 	let response = await fetch(upload_link, {
 		method: 'POST',
+		headers: { 'Content-Type': 'multipart/form-data' },
 		body: formData
 	});
 	
