@@ -50,14 +50,14 @@ var get_server = async function() {
 	let access_token  = response.access_token
 	console.log(access_token);
 
-	response = await vkBridge.send('VKWebAppCallAPIMethod', {
+	let response_albums = await vkBridge.send('VKWebAppCallAPIMethod', {
 			method: 'photos.getAlbums',
 			params: {
 			v: '5.131',
 			access_token: access_token
 		},
 	})	
-	albums = response.response
+	albums = response_albums.response
 
 	let album_id = -1
 	albums.items.forEach(a=>{
@@ -98,10 +98,10 @@ var get_server = async function() {
 	
 	const blob = await new Promise(resolve => app.renderer.plugins.extract.canvas(objects.pic_1).toBlob(resolve));
 	
-	let formData = new FormData();
+	formData = new FormData();
 	formData.append("file1", blob);
 
-	let response = await fetch(upload_link, {
+	let response2 = await fetch(upload_link, {
 		method: 'POST',
 		headers: { 'Content-Type': 'multipart/form-data' },
 		body: formData
