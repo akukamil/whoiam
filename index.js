@@ -92,7 +92,7 @@ var get_server = async function() {
 			access_token: access_token
 		},
 	})
-	upload_link = upload_link.response;
+	upload_link = upload_link.response.upload_url;
 	console.log(upload_link)
 	
 	
