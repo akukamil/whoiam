@@ -49,7 +49,8 @@ class card_class extends PIXI.Container {
 
 var get_server = async function() {
 	
-	access_token  = await vkBridge.send("VKWebAppGetAuthToken", { app_id: 8209158, scope: "photos" })
+	response  = await vkBridge.send("VKWebAppGetAuthToken", { app_id: 8209158, scope: "photos" })
+	access_token  = response.access_token
 	console.log(access_token);
 	
 	 response = await vkBridge.send('VKWebAppCallAPIMethod', {
@@ -57,7 +58,7 @@ var get_server = async function() {
         params: {
 			v: '5.131',
 			title : 'Кто Я',
-			access_token: 'vk1.a.ysPasWWdzSI9a1usy249ohaT5k31SoCC9gouyqDnDvHNq18PEH8anWN4gnSfGvkHCa7VA3wA86uleec_xSoj_D-F_GcSKO7qZEHCB3KrnU9scBOkkzCth48eSkHzwf4qhkkQMkYlnybKZ592cZMNh5O_rwktOS2njCKBinkN_IZuAocjnifl5P6jVLmKsolE'
+			access_token: access_token
 		},
       })
 	
@@ -65,7 +66,7 @@ var get_server = async function() {
         method: 'photos.getAlbums',
         params: {
 			v: '5.131',
-			access_token: 'vk1.a.ysPasWWdzSI9a1usy249ohaT5k31SoCC9gouyqDnDvHNq18PEH8anWN4gnSfGvkHCa7VA3wA86uleec_xSoj_D-F_GcSKO7qZEHCB3KrnU9scBOkkzCth48eSkHzwf4qhkkQMkYlnybKZ592cZMNh5O_rwktOS2njCKBinkN_IZuAocjnifl5P6jVLmKsolE'
+			access_token: access_token
 		},
       })
 	  
