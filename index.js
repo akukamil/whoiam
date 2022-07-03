@@ -46,8 +46,8 @@ class card_class extends PIXI.Container {
 
 var get_server = async function() {
 	
-	response  = await vkBridge.send("VKWebAppGetAuthToken", { app_id: 8209158, scope: "photos" })
-	access_token  = response.access_token
+	let response  = await vkBridge.send("VKWebAppGetAuthToken", { app_id: 8209158, scope: "photos" })
+	let access_token  = response.access_token
 	console.log(access_token);
 
 	response = await vkBridge.send('VKWebAppCallAPIMethod', {
