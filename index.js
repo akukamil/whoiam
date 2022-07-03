@@ -52,35 +52,48 @@ var get_server = async function() {
 	response  = await vkBridge.send("VKWebAppGetAuthToken", { app_id: 8209158, scope: "photos" })
 	access_token  = response.access_token
 	console.log(access_token);
-	
-	 response = await vkBridge.send('VKWebAppCallAPIMethod', {
-        method: 'photos.createAlbum',
-        params: {
-			v: '5.131',
-			title : 'Кто Я',
-			access_token: access_token
-		},
-      })
-	
-	 response = await vkBridge.send('VKWebAppCallAPIMethod', {
-        method: 'photos.getAlbums',
-        params: {
+
+	albums = await vkBridge.send('VKWebAppCallAPIMethod', {
+			method: 'photos.getAlbums',
+			params: {
 			v: '5.131',
 			access_token: access_token
 		},
-      })
-	  
-	  console.log(response)
+	})	
+
+	let album_id = -1
+	albums.items.forEach(a=>{
+		if (a.title === 'КтоЯ')
+			album_id = a.id
+	})
 	
-	
-	 response = await vkBridge.send('VKWebAppCallAPIMethod', {
-        method: 'photos.getUploadServer',
-        params: {
+
+	//если нет альбома для игры
+	if (album_id === -1) {
+		
+		response = await vkBridge.send('VKWebAppCallAPIMethod', {
+			method: 'photos.createAlbum',
+			params: {
+				v: '5.131',
+				title : 'КтоЯ',
+				access_token: access_token
+			},
+		})		
+		album_id = response.id
+		console.log('Создал альбом КтоЯ: ', album_id)
+		
+	}
+
+
+
+	response = await vkBridge.send('VKWebAppCallAPIMethod', {
+		method: 'photos.getUploadServer',
+		params: {
 			v: '5.131',
 		},
-      })
-	  
-	  console.log(response)
+	})
+
+	console.log(response)
 	
 	
 }
