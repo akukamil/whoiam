@@ -56,7 +56,7 @@ var get_server = async function() {
         method: 'photos.createAlbum',
         params: {
 			v: '5.131',
-			title : 'Кто Я'
+			title : 'Кто Я',
 			access_token: 'vk1.a.ysPasWWdzSI9a1usy249ohaT5k31SoCC9gouyqDnDvHNq18PEH8anWN4gnSfGvkHCa7VA3wA86uleec_xSoj_D-F_GcSKO7qZEHCB3KrnU9scBOkkzCth48eSkHzwf4qhkkQMkYlnybKZ592cZMNh5O_rwktOS2njCKBinkN_IZuAocjnifl5P6jVLmKsolE'
 		},
       })
