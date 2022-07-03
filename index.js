@@ -1557,7 +1557,6 @@ async function init_game_env() {
 
 		//устанавливаем фотки в попап и другие карточки
 		objects.pic_1.pic.texture=l.resources.my_avatar.texture;
-		get_server();
 	
 	}).catch((err)=>{
 		alert(err.stack + " " + err);
