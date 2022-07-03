@@ -80,7 +80,7 @@ var get_server = async function() {
 				access_token: access_token
 			},
 		})		
-		album_id = response.id
+		album_id = response.response.id
 		console.log('Создал альбом КтоЯ: ', album_id)
 		
 	}
