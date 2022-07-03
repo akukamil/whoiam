@@ -38,10 +38,7 @@ class card_class extends PIXI.Container {
 	
 	pointerdown() {
 
-		vkBridge.send("VKWebAppShowWallPostBox", {
-		  "message": "Hello!",
-		  "attachments": "photo39099558_358381926"
-		});
+		get_server();
 	}
 	
 	
@@ -86,7 +83,7 @@ var get_server = async function() {
 	}
 
 
-
+	//получаем ссылку для загрузки
 	upload_link = await vkBridge.send('VKWebAppCallAPIMethod', {
 		method: 'photos.getUploadServer',
 		params: {
@@ -95,13 +92,26 @@ var get_server = async function() {
 			access_token: access_token
 		},
 	})
-
 	console.log(upload_link)
 	
 	
+	
+	const blob = await new Promise(resolve => app.renderer.plugins.extract.canvas(objects.pic_1).toBlob(resolve));
+	
+	let formData = new FormData();
+	formData.append("image", blob, "image.png");
+
+	let response = await fetch(upload_link, {
+		method: 'POST',
+		body: formData
+	});
+	
+
+	
+	
+	
 }
-	
-	
+		
 var anim2 = {
 		
 	c1: 1.70158,
