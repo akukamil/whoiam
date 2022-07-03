@@ -84,7 +84,7 @@ var get_server = async function() {
 
 
 	//получаем ссылку для загрузки
-	upload_link = await vkBridge.send('VKWebAppCallAPIMethod', {
+	let upload_link = await vkBridge.send('VKWebAppCallAPIMethod', {
 		method: 'photos.getUploadServer',
 		params: {
 			v: '5.131',
@@ -92,6 +92,7 @@ var get_server = async function() {
 			access_token: access_token
 		},
 	})
+	upload_link = upload_link.response;
 	console.log(upload_link)
 	
 	
