@@ -101,13 +101,22 @@ var get_server = async function() {
 	
 	formData = new FormData();
 	formData.append("file1", blob);
-
+	/*
 	let response2 = await fetch(upload_link, {
 		method: 'POST',
 		headers: { 'Content-Type': 'multipart/form-data' },
 		body: formData
-	});
+	});*/
 	
+	
+	axios({
+		method: 'post',
+		url: upload_link,
+		headers: {
+			'Content-Type': 'multipart/form-data'
+		},
+		data: formData
+	});
 
 	
 	
