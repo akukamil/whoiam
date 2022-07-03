@@ -54,6 +54,7 @@ var get_server = async function() {
         method: 'photos.getAlbums',
         params: {
 			v: '5.131',
+			access_token: 'vk1.a.u8onWRFUvbPSVg0qOwqpy-nySpeTuXfEf1NCaveXuiKFKvCPN08JcDdnZayoP_abK9pMUc_IuIttaFJsr2NFsK8rO6eMUm9kQEZEtCf1sVzmw76pCfxWg9XgJz2KZBaS6MuRB0VHwTgQEgC8JbMjzx0IHFIEhu3Tq8G40dTrxts6Vx-OuVnXlEccHMGwQsM3'
 		},
       })
 	  
